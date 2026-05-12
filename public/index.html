@@ -420,12 +420,12 @@ async function getAIRecommendation() {
   const location = document.getElementById('aiLocation').value.trim();
 
   if (!symptoms) {
-    toast('Pehle apne symptoms likhein.', 'error');
+    toast('Write Symptoms.', 'error');
     return;
   }
 
   const area = document.getElementById('aiResultsArea');
-  area.innerHTML = '<div class="spinner-wrap"><div class="spinner"></div><span>AI analyze kar raha hai…</span></div>';
+  area.innerHTML = '<div class="spinner-wrap"><div class="spinner"></div><span>AI Analyzing…</span></div>';
 
   try {
     const res = await fetch(API + '/recommend-doctor', {
@@ -438,7 +438,7 @@ async function getAIRecommendation() {
     const data = await res.json();
 
     if (!data.recommendations || data.recommendations.length === 0) {
-      area.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--sl400);font-size:.9rem;">Koi recommendation nahi mili. Alag symptoms try karein.</div>';
+      area.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--sl400);font-size:.9rem;">Dont Found any Recomendation, Please Try another Symtoms.</div>';
       return;
     }
 
@@ -468,7 +468,7 @@ async function getAIRecommendation() {
 
     const grid = document.getElementById('aiGrid');
     if (valid.length === 0) {
-      grid.innerHTML = '<div style="text-align:center;padding:1.5rem;color:var(--sl400);">Doctor details load nahi ho sake.</div>';
+      grid.innerHTML = '<div style="text-align:center;padding:1.5rem;color:var(--sl400);">Cant Load Doctor details.</div>';
     } else {
       grid.innerHTML = valid.map(function(d) { return doctorCard(d); }).join('');
     }
@@ -495,7 +495,7 @@ async function registerDoctor() {
   const bio   = document.getElementById('docBio').value.trim();
 
   if (!name || !spec || !loc) {
-    toast('Name, specialization aur city required hain.', 'error');
+    toast('Name, specialization and City Required.', 'error');
     return;
   }
 
@@ -510,10 +510,10 @@ async function registerDoctor() {
       ['docName','docSpec','docLocation','docEmail','docPhone','docExp','docBio'].forEach(function(id){ document.getElementById(id).value = ''; });
       setTimeout(loadAllDoctors, 800);
     } else {
-      toast('Registration fail. Dobara try karein.', 'error');
+      toast('Registration fail. Try Agian.', 'error');
     }
   } catch(e) {
-    toast('Server error. Connection check karein.', 'error');
+    toast('Server error. Check Connection.', 'error');
   }
 }
 
@@ -528,7 +528,7 @@ function displayDoctors(doctors, emptyMsg) {
       '<div class="empty-state">' +
         '<div class="empty-icon">🏥</div>' +
         '<h3>' + (emptyMsg || 'No doctors found') + '</h3>' +
-        '<p>Search ya filters adjust karein</p>' +
+        '<p>Adjust the Search or Filters.</p>' +
       '</div>';
     return;
   }
@@ -605,7 +605,7 @@ async function viewDoctor(id) {
 
     document.getElementById('doctorModal').classList.add('active');
   } catch(e) {
-    toast('Doctor details load nahi ho sake.', 'error');
+    toast('Cant Load Doctor details.', 'error');
   }
 }
 
@@ -622,10 +622,10 @@ function showConnError() {
   document.getElementById('doctorsContainer').innerHTML =
     '<div class="empty-state">' +
       '<div class="empty-icon">⚠️</div>' +
-      '<h3>Server se connect nahi ho saka</h3>' +
-      '<p>Terminal mein <strong>npm start</strong> run karein phir refresh karein.</p>' +
+      '<h3> Cannot Connect to Server</h3>' +
+      '<p>Terminal mein <strong>npm start</strong>run this then refresh it.</p>' +
     '</div>';
-  toast('Server connection fail. npm start check karein.', 'error');
+  toast('Server connection fail, please check npm start.', 'error');
 }
 
 /* ── INIT ── */
