@@ -1,0 +1,100 @@
+⚡ SMART DOCTOR CONNECT AI - 5 MINUTE QUICK START
+
+==========================================
+STEP 1: OPEN TERMINAL (Ctrl + `)
+==========================================
+
+STEP 2: INSTALL DEPENDENCIES (30 seconds)
+==========================================
+npm install
+
+Wait for: "added XX packages"
+
+==========================================
+STEP 3: CREATE .env FILE (1 minute)
+==========================================
+1. Copy content of .env.example
+2. Create new file called .env
+3. Paste the content
+4. Get API key from: 
+5. Replace "your_api_key_here" with actual key
+
+Your .env should look like:
+---
+ANTHROPIC_API_KEY=sk-ant-abc123xyz...
+PORT=3000
+---
+
+(Don't have API key? Get free credits at Anthropic)
+
+==========================================
+STEP 4: START SERVER (1 minute)
+==========================================
+npm start
+
+You should see:
+✅ Connected to SQLite database
+✅ Doctors table ready
+✅ Sample doctors inserted
+🚀 Server running on http://localhost:3000
+
+==========================================
+STEP 5: OPEN IN BROWSER (30 seconds)
+==========================================
+Go to: http://localhost:3000
+
+That's it! Your platform is live! 🎉
+
+==========================================
+WHAT YOU CAN DO NOW:
+==========================================
+✅ Search for doctors (try "Cardiologist Lahore")
+✅ Filter by specialization, location, type
+✅ Get AI recommendations (describe symptoms)
+✅ Register new doctors
+✅ View doctor profiles
+✅ Contact doctors (email/phone)
+
+==========================================
+FIRST TEST: AI RECOMMENDATION
+==========================================
+1. Click "🤖 AI Recommendation" tab
+2. Type: "back pain"
+3. Click "Get AI Recommendation"
+4. Watch AI suggest orthopedic doctors! 🤖
+
+==========================================
+STUCK? TROUBLESHOOT:
+==========================================
+Error: "Port 3000 in use"
+→ npm install -g kill-port && kill-port 3000
+→ npm start
+
+Error: "API key error"
+→ Check .env file exists (not .env.example)
+→ API key is pasted correctly
+→ Restart server
+
+Error: "Cannot find module"
+→ rm -rf node_modules
+→ npm install
+→ npm start
+
+Error: "CORS" or "Cannot connect"
+→ Make sure server is running (npm start)
+→ Open http://localhost:3000 (not file://)
+→ Check firewall allows port 3000
+
+==========================================
+NEXT STEPS:
+==========================================
+📖 Read README.md for full documentation
+🛠️ Deploy to Heroku/Railway (see README)
+📝 Add more features (chat, appointments)
+🎨 Customize the design (edit index.html)
+
+==========================================
+
+Questions? Check the README.md file!
+
+Good luck! 🚀
