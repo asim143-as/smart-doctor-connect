@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🏥 Smart Doctor Connect AI - Complete Setup Guide
 
 A full-stack healthcare platform for connecting patients with doctors using AI recommendations.
@@ -356,3 +357,6 @@ Your Smart Doctor Connect AI platform is live!
 - ✅ Add messaging system (Phase 2)
 
 Happy coding! 🚀
+=======
+# smart-doctor-connect
+>>>>>>> 3d287f656e7fafafc2d7616e91dcebfba5e25dfa
