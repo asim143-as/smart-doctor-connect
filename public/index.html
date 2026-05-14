@@ -193,7 +193,7 @@ header{background:var(--em950);padding:0 1.5rem;position:sticky;top:0;z-index:20
 </header>
 
 <section class="hero">
-  <div class="hero-pill">🤖 AI-Powered Recommendations</div>
+  <div class="hero-pill"> AI-Powered Recommendations</div>
   <h1>Find the <em>right doctor</em><br/>for your symptoms</h1>
   <p>Describe what you're feeling — our AI instantly matches you with the best doctors in Pakistan.</p>
   <div class="search-bar">
@@ -208,7 +208,7 @@ header{background:var(--em950);padding:0 1.5rem;position:sticky;top:0;z-index:20
   <div class="section-card">
     <div class="tabs">
       <button class="tab-btn active" id="tab-search" onclick="switchTab('search')">🔍 Search</button>
-      <button class="tab-btn" id="tab-ai" onclick="switchTab('ai')">🤖 AI Recommendation</button>
+      <button class="tab-btn" id="tab-ai" onclick="switchTab('ai')"> AI Recommendation</button>
       <button class="tab-btn" id="tab-register" onclick="switchTab('register')">➕ Register Doctor</button>
     </div>
 
@@ -412,9 +412,7 @@ async function applyFilters() {
   }
 }
 
-/* ── AI RECOMMENDATION ──
-   Hits /api/recommend-doctor → gets IDs → fetches full doctor objects → shows cards
-*/
+
 async function getAIRecommendation() {
   const symptoms = document.getElementById('symptoms').value.trim();
   const location = document.getElementById('aiLocation').value.trim();
@@ -442,7 +440,7 @@ async function getAIRecommendation() {
       return;
     }
 
-    /* Fetch full doctor details for each recommendation */
+  
     const fullDoctors = await Promise.all(
       data.recommendations.map(async function(r) {
         try {
@@ -473,17 +471,16 @@ async function getAIRecommendation() {
       grid.innerHTML = valid.map(function(d) { return doctorCard(d); }).join('');
     }
 
-    /* Also push to main grid */
     displayDoctors(valid);
     document.getElementById('resultsTitle').textContent = 'AI Recommended Doctors';
 
   } catch (e) {
-    area.innerHTML = '<div style="padding:1rem;background:var(--rd50);border-radius:8px;color:var(--rd600);font-size:.875rem;">❌ Server se connect nahi ho saka. npm start check karein.</div>';
+    area.innerHTML = '<div style="padding:1rem;background:var(--rd50);border-radius:8px;color:var(--rd600);font-size:.875rem;">Cannot connect to the server.</div>';
     console.error(e);
   }
 }
 
-/* ── REGISTER ── */
+
 async function registerDoctor() {
   const name  = document.getElementById('docName').value.trim();
   const spec  = document.getElementById('docSpec').value.trim();
@@ -506,7 +503,7 @@ async function registerDoctor() {
       body: JSON.stringify({ name: name, specialization: spec, location: loc, consultationType: cons, experience: exp, email: email, phone: phone, bio: bio })
     });
     if (res.ok) {
-      toast('Doctor successfully register ho gaya!', 'success');
+      toast('Doctor registered successfully!', 'success');
       ['docName','docSpec','docLocation','docEmail','docPhone','docExp','docBio'].forEach(function(id){ document.getElementById(id).value = ''; });
       setTimeout(loadAllDoctors, 800);
     } else {
@@ -598,7 +595,7 @@ async function viewDoctor(id) {
     document.getElementById('modalBody').innerHTML = rows;
 
     var actions = '';
-    if (d.email) actions += '<a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&to=' + encodeURIComponent(d.email) + '" target="_blank" rel="noopener">✉️ Gmail mein Email</a>';
+    if (d.email) actions += '<a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&to=' + encodeURIComponent(d.email) + '" target="_blank" rel="noopener">✉️ Gmail</a>';
     if (d.phone) actions += '<a class="btn btn-outline" href="tel:' + d.phone + '">📞 Call Doctor</a>';
     actions += '<button class="btn btn-outline" onclick="closeModal()">Close</button>';
     document.getElementById('modalActions').innerHTML = actions;
